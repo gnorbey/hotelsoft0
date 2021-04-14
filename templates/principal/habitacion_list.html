@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table table-border">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Numero</td>
+            <td>Estado</td>
+            <td>Costo</td>
+            <td>Descripcion</td>
+            <td>Tipo</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for habitacion in object_list %}
+        <tr>
+            <td>{{ habitacion.id }}</td>
+            <td>{{ habitacion.numero }}</td>
+            <td>{{ habitacion.estado }}</td>
+            <td>{{ habitacion.costo }}</td>
+            <td>{{ habitacion.descripcion }}</td>
+            <td>{{ habitacion.tipo }}</td>
+            <td>
+                <a class="btn btn-primary" href="{% url 'habitacion_editar' habitacion.id %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'habitacion_eliminar' habitacion.id %}">Eliminar</a>
+            </td>
+            
+
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No se encuentran registros</h1>
+        {% endif %}
+    </tbody>
+    
+
+</table>
+
+<button class="btn btn-dark" OnClick="{location.href='nuevo'}" style="background-color: rgb(202, 207, 206);">Crear Habitacion</button>
+
+{% endblock %}
+    

@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table table-border">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Pais</td>
+            <td>Nacionalidad</td>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for principal in object_list %}
+        <tr>
+            <td>{{ principal.id }}</td>
+            <td>{{ principal.pais }}</td>
+            <td>{{ principal.nacionalidad }}</td>
+            
+
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No se encuentran registros
+        {% endif %}
+        </h1>
+    </tbody>
+
+</table>
+{% endblock %}
